@@ -13,3 +13,18 @@ var twoSum = function(nums, target) {
       }
   }
 };
+
+
+//Question 7 Reverse Integer
+var reverse = function(x) {
+  let int = x.toString().split('')
+  let ans = []
+  if(int[0] == '-'){ ans.push(int[0])}
+  for(i=int.length-1; i>=0; i--){
+      ans.push(int[i])
+  }
+  if(parseInt(ans.join('')) > (Math.pow(2, 31)-1) || parseInt(ans.join('')) < (Math.pow(-2, 31))){
+      return 0
+  }
+  return parseInt(ans.join(''))
+};
