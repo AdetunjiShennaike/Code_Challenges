@@ -28,3 +28,11 @@ var reverse = function(x) {
   }
   return parseInt(ans.join(''))
 };
+
+//Question 9 Palindrome Number
+var isPalindrome = function(x) {
+  if(x >= 0 && parseInt(x.toString().split('').reverse().join('')) == x) {
+      return true
+  } 
+  return false
+};
