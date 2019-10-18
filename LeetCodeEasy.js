@@ -1,9 +1,4 @@
 //Question 1
-/* 
- * @param {number[]} nums
- * @param {number} target
- * @return {number[]}
- */
 var twoSum = function(nums, target) {
   for(let i = 1;i < nums.length;i++){
       for(let j = i-1;j>=0;j--){
@@ -35,4 +30,23 @@ var isPalindrome = function(x) {
       return true
   } 
   return false
+};
+
+//Question 13 Roman to Integer
+var romanToInt = function(s) {
+  let arr = []
+  s.split('').forEach(e => {
+      if (e.includes('I')) {arr.push(1)}
+      else if(e.includes('V')) {arr.push(5)}
+      else if(e.includes('X')) {arr.push(10)}
+      else if(e.includes('L')) {arr.push(50)}
+      else if(e.includes('C')) {arr.push(100)}
+      else if(e.includes('D')) {arr.push(500)}
+      else if(e.includes('M')) {arr.push(1000)}
+  })
+  let number = 0
+  for(i=0;i<arr.length;i++){
+      arr[i] < arr[i+1] ? (number += (arr[i+1] - arr[i])) && (i++) : number += arr[i]
+  }
+  return number
 };
