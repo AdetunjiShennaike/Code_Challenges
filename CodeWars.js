@@ -21,6 +21,8 @@ function printerError(s) {
   return `${count}/${s.length}`
 }
 
+
+
 /*An isogram is a word that has no repeating letters, consecutive or non-consecutive. 
 Implement a function that determines whether a string that contains only letters is an isogram. 
 Assume the empty string is an isogram. Ignore letter case.
@@ -44,6 +46,7 @@ function isIsogram(str){
 function isIsogram(str){
   return new Set(str.toUpperCase()).size == str.length;
 }
+
 
 
 /*Enough is enough!
@@ -71,4 +74,14 @@ function deleteNth(arr,n){
     }
   }
   return arr
+}
+
+//optimal code
+
+function deleteNth(arr,x) {
+  var cache = {};
+  return arr.filter(function(n) {
+    cache[n] = (cache[n]||0) + 1;
+    return cache[n] <= x;
+  });
 }
