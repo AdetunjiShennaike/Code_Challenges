@@ -53,12 +53,12 @@ var romanToInt = function(s) {
 
 //Question 14 Longest Common Prefix
 var longestCommonPrefix = function(strs) {
-  if(strs.length == 0){ return '' }
-   let ans = strs[0]
-   for(let i = 1;i < strs.length;i++){
-      while(strs[i].indexOf(ans) != 0){
-          ans.length == 0 ? ans = "" : ans = ans.substring(0, ans.length - 1)
-      }
-   }
-   return ans
+  strs.length == 0 ? ans = '' : ans = strs[0]
+  for(let i = 1;i < strs.length;i++){
+     while(strs[i].indexOf(ans) != 0){
+         if(ans.length == 0) return "" 
+         ans = ans.substring(0, ans.length - 1)
+     }
+  }
+  return ans
 };
