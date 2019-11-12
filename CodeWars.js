@@ -216,12 +216,15 @@ Negative numbers and duplicate numbers can and will appear.
 NOTE: There will also be lists tested of lengths upwards of 10,000,000 elements. Be sure your code doesn't time out.*/
 
 var sum_pairs=function(ints, s){
-  let ans = []
-  for(let i = 0; i < ints.length; i++){
-    for(let j = i+1; j < ints.length; j++){ 
+  let ans = [0, ints.length]
+  for(let i = 0; i < ans[1]; i++){
+    for(let j = ans[1]-1; j > i; j--){ 
       if(ints[i] + ints[j] == s && (ans.length == 0 || j < ans[1])){ ans = [i, j] }
+      console.log(ans[1], j)
     }
   }
-  if(ans.length != 2){ return undefined }
-  return ans = [ints[ans[0]], ints[ans[1]]]
+  if(ints[ans[0]] + ints[ans[1]] != s){ return undefined }
+  return [ints[ans[0]], ints[ans[1]]]
 }
+
+//refactored still fails the optimization 
