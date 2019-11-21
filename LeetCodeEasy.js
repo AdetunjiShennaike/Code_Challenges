@@ -62,3 +62,24 @@ var longestCommonPrefix = function(strs) {
   }
   return ans
 };
+
+
+//Question 20 Valid Parentheses
+var isValid = function(s) {
+  if(s[0] !== ('(' || '{' || '[')){return false}
+  for(let i = 0;i< s.length;i++){
+    for(let j = s.length-1;j>i;j--){
+      if(s[i] === '(' ){
+        if(s[j] === ')'){s = s.substring(i+1,(j)) + s.substring(j+1)}        
+      }
+      else if(s[i] === '[' ){
+        if(s[j] === ']'){s = s.substring(i+1,(j)) + s.substring(j+1)}
+      }
+      else if(s[i] === '{' ){
+        if(s[j] === '}'){s = s.substring(i+1,(j)) + s.substring(j+1)}
+      }
+    }  
+  }
+  if(s.length == 2) return true
+  else return false
+};
