@@ -66,20 +66,16 @@ var longestCommonPrefix = function(strs) {
 
 //Question 20 Valid Parentheses
 var isValid = function(s) {
-  if(s[0] !== ('(' || '{' || '[')){return false}
+  if(!s){return true}
+  if(s[0].includes('(') === false && s[0].includes('{') === false && s[0].includes('[') === false){return false}
+  let test = []
   for(let i = 0;i< s.length;i++){
-    for(let j = s.length-1;j>i;j--){
-      if(s[i] === '(' ){
-        if(s[j] === ')'){s = s.substring(i+1,(j)) + s.substring(j+1)}        
-      }
-      else if(s[i] === '[' ){
-        if(s[j] === ']'){s = s.substring(i+1,(j)) + s.substring(j+1)}
-      }
-      else if(s[i] === '{' ){
-        if(s[j] === '}'){s = s.substring(i+1,(j)) + s.substring(j+1)}
-      }
-    }  
+    if(s[i].includes('(') || s[i].includes('{') || s[i].includes('[')){test.push(s[i])}
+    else if(s[i].includes(')') && test[test.length-1] === '('){test.pop()}
+    else if(s[i].includes(']') && test[test.length-1] === '['){test.pop()}
+    else if(s[i].includes('}') && test[test.length-1] === '{'){test.pop()}
+    else{return false}
   }
-  if(s.length == 2) return true
-  else return false
+  if(test.length>0){return false}
+  return true
 };
