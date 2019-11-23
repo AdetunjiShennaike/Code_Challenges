@@ -40,3 +40,21 @@ function plusMinus(arr) {
   let ans = `${(pos/arr.length).toFixed(6)}\n${(neg/arr.length).toFixed(6)}\n${(zero/arr.length).toFixed(6)}`
   console.log(ans)
 }
+
+
+function staircase(n) {
+  let space = n-1, count = 0, ans = ''
+  for(let i=1;i<=n;i++){
+      while(count < space){
+          ans += ' '
+          count++
+      } 
+      space--
+      count = 0
+      for(let j=i+i;j>i;j--){
+          ans += '#'
+          if(j == i+1){ans += '\n'}
+      }
+  }
+  console.log(ans)
+}
