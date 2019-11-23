@@ -69,10 +69,8 @@ var isValid = function(s) {
   if(!s){return true}
   let test = []
   for(let i = 0;i< s.length;i++){
-    if(s[i].includes('(') || s[i].includes('{') || s[i].includes('[')){test.push(s[i])}
-    else if(s[i].includes(')') && test[test.length-1] === '('){test.pop()}
-    else if(s[i].includes(']') && test[test.length-1] === '['){test.pop()}
-    else if(s[i].includes('}') && test[test.length-1] === '{'){test.pop()}
+    if((s[i].includes(')') && test[test.length-1] === '(') || (s[i].includes(']') && test[test.length-1] === '[') ||(s[i].includes('}') && test[test.length-1] === '{')){test.pop()}
+    else if(s[i].includes('(') || s[i].includes('{') || s[i].includes('[')){test.push(s[i])}
     else{return false}
   }
   if(test.length>0){return false}
