@@ -67,7 +67,6 @@ var longestCommonPrefix = function(strs) {
 //Question 20 Valid Parentheses
 var isValid = function(s) {
   if(!s){return true}
-  if(s[0].includes('(') === false && s[0].includes('{') === false && s[0].includes('[') === false){return false}
   let test = []
   for(let i = 0;i< s.length;i++){
     if(s[i].includes('(') || s[i].includes('{') || s[i].includes('[')){test.push(s[i])}

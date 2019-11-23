@@ -28,3 +28,15 @@ function diagonalDifference(arr) {
   }
   return Math.abs(left - right)
 }
+
+
+function plusMinus(arr) {
+  let neg = 0, pos = 0, zero = 0
+  for(let i = 0;i < arr.length;i++){
+      if(arr[i] == 0){zero++}
+      else if(arr[i] > 0){pos++}
+      else{neg++}
+  }
+  let ans = `${(pos/arr.length).toFixed(6)}\n${(neg/arr.length).toFixed(6)}\n${(zero/arr.length).toFixed(6)}`
+  console.log(ans)
+}
