@@ -58,3 +58,14 @@ function staircase(n) {
   }
   console.log(ans)
 }
+
+
+function miniMaxSum(arr) {
+  let min = 0,max = 0, check
+  for(let i=0;i <arr.length;i++){
+      check = (arr.slice(0,i).reduce((acc, cV) => acc + cV, 0) + arr.slice(i+1, (arr.length)).reduce((acc, cV) => acc + cV, 0))
+      if(check > max){max = check}
+      if( i === 0 || check < min){min = check}
+  }
+  console.log(`${min} ${max}`)
+}
