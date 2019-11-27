@@ -69,3 +69,13 @@ function miniMaxSum(arr) {
   }
   console.log(`${min} ${max}`)
 }
+
+
+function birthdayCakeCandles(ar) {
+  let count = 0, high = 0
+  ar.forEach(e => {
+      if(e > high){(high = e) && (count = 0)}
+      if(e == high){count++}
+  })
+  return count
+}
