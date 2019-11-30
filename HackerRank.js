@@ -79,3 +79,20 @@ function birthdayCakeCandles(ar) {
   })
   return count
 }
+
+
+function timeConversion(s) {
+  if(s.includes('12:00:00AM')){return '00:00:00'}
+  let time = s.split(':')
+  if(!(time[0].includes('12')) && time[2].includes('PM')){
+      let temp = parseInt(time[0]) 
+      temp += 12
+      time[0] = temp + ''
+      return time.join(':').slice(0,(s.length-2))
+  }
+  else if(time[0].includes('12') && time[2].includes('AM')){
+      time[0] = '00'
+      return time.join(':').slice(0,(s.length-2))
+  }
+  return s.slice(0,(s.length-2)) 
+}
