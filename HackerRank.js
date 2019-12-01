@@ -102,3 +102,20 @@ function simpleArraySum(ar) {
   return ar.reduce((acc, val) => acc + val, 0)
 }
 
+
+function gradingStudents(grades) {
+  for(let i =0;i<grades.length;i++){
+      if(grades[i] < 38){grades[i]}
+      else{
+          let count = 0
+          let temp = grades[i]
+          while(!(temp.toString().includes('0')) && !(temp.toString().includes('5'))){
+              count++
+              temp++
+          }
+          while((52 < temp && temp < 55) || (57 < temp && temp < 60)){temp++}
+          if(count < 3){grades[i] = temp}
+      }
+  }
+  return grades
+}
