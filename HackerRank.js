@@ -96,3 +96,9 @@ function timeConversion(s) {
   }
   return s.slice(0,(s.length-2)) 
 }
+
+
+function simpleArraySum(ar) {
+  return ar.reduce((acc, val) => acc + val, 0)
+}
+
