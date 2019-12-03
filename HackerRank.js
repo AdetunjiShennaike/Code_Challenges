@@ -119,3 +119,13 @@ function gradingStudents(grades) {
   }
   return grades
 }
+
+
+function slowestKey(keyTimes) {
+  let ans = [0, 0], temp = 0
+  for(let i = 0;i < keyTimes.length;i++){
+      i == 0 ? temp = keyTimes[i][1] : temp = keyTimes[i][1] - keyTimes[i-1][1]
+      if(temp > ans[1]) ans = [keyTimes[i][0], temp]
+  }
+  return String.fromCharCode(97+ans[0])
+}
