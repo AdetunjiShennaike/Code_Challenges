@@ -225,24 +225,23 @@ var sum_pairs=function(ints, s){
   }
   if(ints[ans[0]] + ints[ans[1]] != s){ return undefined }
   return [ints[ans[0]], ints[ans[1]]]
-}
-
-//refactored still fails the optimization 
+}//refactored still fails the optimization 
 
 
-// Take an integer n (n >= 0) and a digit d (0 <= d <= 9) as an integer. Square all numbers k (0 <= k <= n) between 0 and n. Count the numbers of digits d used in the writing of all the k**2. Call nb_dig (or nbDig or ...) the function taking n and d as parameters and returning this count.
 
-// #Examples:
 
-// n = 10, d = 1, the k*k are 0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100
-// We are using the digit 1 in 1, 16, 81, 100. The total count is then 4.
+/*Take an integer n (n >= 0) and a digit d (0 <= d <= 9) as an integer. Square all numbers k (0 <= k <= n) between 0 and n. Count the numbers of digits d used in the writing of all the k**2. Call nb_dig (or nbDig or ...) the function taking n and d as parameters and returning this count.
 
-// nb_dig(25, 1):
-// the numbers of interest are
-// 1, 4, 9, 10, 11, 12, 13, 14, 19, 21 which squared are 1, 16, 81, 100, 121, 144, 169, 196, 361, 441
-// so there are 11 digits `1` for the squares of numbers between 0 and 25.
-// Note that 121 has twice the digit 1.
+#Examples:
 
+n = 10, d = 1, the k*k are 0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100
+We are using the digit 1 in 1, 16, 81, 100. The total count is then 4.
+
+nb_dig(25, 1):
+the numbers of interest are
+1, 4, 9, 10, 11, 12, 13, 14, 19, 21 which squared are 1, 16, 81, 100, 121, 144, 169, 196, 361, 441
+so there are 11 digits `1` for the squares of numbers between 0 and 25.
+Note that 121 has twice the digit 1. */
 
 function nbDig(n, d) {
   let count = 0;
@@ -250,4 +249,39 @@ function nbDig(n, d) {
     Math.pow(i,2).toString().split('').forEach( e => e.includes(d) ? count++ : count)
   }
   return count
+}
+
+
+
+/*The main idea is to count all the occuring characters(UTF-8) in string. If you have string like this aba then the result should be { 'a': 2, 'b': 1 }
+
+What if the string is empty ? Then the result should be empty object literal { }*/
+
+function count (string) {
+  if(string){
+    let check = string.split(''), obj = {}
+    check.forEach(e => { obj[e] ? obj[e] += 1 : obj[e] = 1 })
+    return obj
+  }
+  return {};
+}
+
+
+
+/*Write a function that takes an array of numbers (integers for the tests) and a target number. It should find two different items in the array that, when added together, give the target value. The indices of these items should then be returned in a tuple like so: (index1, index2).
+
+For the purposes of this kata, some tests may have multiple answers; any valid solutions will be accepted.
+
+The input will always be valid (numbers will be an array of length 2 or greater, and all of the items will be numbers; target will always be the sum of two different items from that array).
+
+Based on: http://oj.leetcode.com/problems/two-sum/
+
+twoSum [1, 2, 3] 4 === (0, 2)*/
+
+function twoSum(numbers, target) {
+  for(let i = 0;i < numbers.length;i++){
+    for(let j = (i + 1);j < numbers.length;j++){
+      if((numbers[i] + numbers[j]) == target){ return [i, j] }
+    }
+  }
 }
