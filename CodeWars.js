@@ -229,7 +229,6 @@ var sum_pairs=function(ints, s){
 
 
 
-
 /*Take an integer n (n >= 0) and a digit d (0 <= d <= 9) as an integer. Square all numbers k (0 <= k <= n) between 0 and n. Count the numbers of digits d used in the writing of all the k**2. Call nb_dig (or nbDig or ...) the function taking n and d as parameters and returning this count.
 
 #Examples:
@@ -284,4 +283,35 @@ function twoSum(numbers, target) {
       if((numbers[i] + numbers[j]) == target){ return [i, j] }
     }
   }
+}
+
+/*Given: an array containing hashes of names
+
+Return: a string formatted as a list of names separated by commas except for the last two names, which should be separated by an ampersand.
+
+Example:
+
+list([ {name: 'Bart'}, {name: 'Lisa'}, {name: 'Maggie'} ])
+// returns 'Bart, Lisa & Maggie'
+
+list([ {name: 'Bart'}, {name: 'Lisa'} ])
+// returns 'Bart & Lisa'
+
+list([ {name: 'Bart'} ])
+// returns 'Bart'
+
+list([])
+// returns ''
+Note: all the hashes are pre-validated and will only contain A-Z, a-z, '-' and '.'.*/
+
+function list(names){
+  if(names.length == 1){ return names[0]['name'] }
+  if(names.length >= 2){
+    let ans = ''
+    for(let i = 0;i < names.length;i++){
+      i == names.length-1 ? (ans = ans.slice(0,ans.length-2)) && (ans += ` & ${names[i]['name']}`) : ans += `${names[i]['name']}, `
+    }
+    return ans
+  }
+  return ''
 }
