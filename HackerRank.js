@@ -129,3 +129,17 @@ function slowestKey(keyTimes) {
   }
   return String.fromCharCode(97+ans[0])
 }
+
+
+function numberOfWays(queries) {
+  let ans = [], temp = 0
+  for(let i = 0;i < queries.length;i++){
+      ans.push(0)
+      queries[i][0] > queries[i][1] ? temp = queries[i][1] : temp = queries[i][0]
+      while(temp >= 0){
+          ans[i] += ((queries[i][1]-temp) * (queries[i][0]-temp))
+          temp--
+      }
+  }
+  return ans
+}
