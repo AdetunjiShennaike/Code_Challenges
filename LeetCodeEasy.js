@@ -76,3 +76,64 @@ var isValid = function(s) {
   if(test.length>0){return false}
   return true
 };
+
+
+// Question 21 Merge Two Sorted Lists
+function Node(val){
+  this.val = val;
+  this.next = null;
+}
+var mergeTwoLists = function(l1, l2) {
+  if(l1 == null){return l2}
+  else if(l2 == null){return l1}
+  let ans, tail
+  if(l1.val < l2.val){
+    ans =  new Node(l1.val) 
+    ans.next = new Node(l2.val)
+    tail = ans.next
+  }
+  else{
+    ans =  new Node(l2.val) 
+    ans.next = new Node(l1.val)
+    tail = ans.next
+  }
+  while(l1.next !== null || l2.next !== null){
+    if(l1.next == null){
+      l2 = l2.next
+      tail.next = new Node(l2.val)
+      tail = tail.next
+    }
+    else if(l2.next == null){
+      l1 = l1.next
+      tail.next = new Node(l1.val)
+      tail = tail.next
+    }
+    else if(l1.next.val < l2.next.val){
+      if(l1.next != null){
+        l1 = l1.next
+        tail.next = new Node(l1.val)
+        tail = tail.next
+      }
+      if(l2.next != null){
+        l2 = l2.next
+        tail.next = new Node(l2.val)
+        tail = tail.next
+      }
+    }
+    else{
+      if(l2.next != null){
+        l2 = l2.next
+        tail.next = new Node(l2.val)
+        tail = tail.next
+      }
+      if(l1.next != null){
+        l1 = l1.next
+        tail.next = new Node(l1.val)
+        tail = tail.next
+      }
+    }
+  }
+  return ans
+};
+
+//lists are not sorted at all and you have to sort them evn past the parallel values, the entire new list node has to be sorted, description for this is super bad, especially for an easy question 
