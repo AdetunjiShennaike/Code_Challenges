@@ -225,7 +225,42 @@ var sum_pairs=function(ints, s){
   }
   if(ints[ans[0]] + ints[ans[1]] != s){ return undefined }
   return [ints[ans[0]], ints[ans[1]]]
-}//refactored still fails the optimization 
+}
+
+var sum_pairs=function(ints, s){
+  let ans = [0, ints.length], c = 0, j =0
+  while(c < ans[1]){
+    for(let j = c+1; j < ans[1]; j++){ 
+      if(ints[c] + ints[j] == s){ ans = [c, j] }
+      console.log(c, ans[1], j)
+    }
+    c++
+  }
+  if(ints[ans[0]] + ints[ans[1]] == s) return [ints[ans[0]], ints[ans[1]]]
+}
+//refactored still fails the optimization 
+
+var sum_pairs=function(ints, s){
+  let ans = [0, ints.length], c = 0, j = 1
+  while(j <= ans[1]){
+    if(ints[c] + ints[j] == s){ 
+      ans = [c, j]
+      c++
+      j = c
+    }
+    else if(j == ans[1]){
+      c++
+      j = c
+    }
+    j++
+  }
+  if(ints[ans[0]] + ints[ans[1]] == s) return [ints[ans[0]], ints[ans[1]]]
+}
+//refactored still fails even though there is now only 1 loop
+
+
+
+
 
 
 

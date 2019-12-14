@@ -143,3 +143,24 @@ function numberOfWays(queries) {
   }
   return ans
 }
+
+
+function numofPrizes(k, marks) {
+  // let ans = 0
+  // for(let i = 0;i < marks.length;i++){
+  //     if(marks[i] > 0){
+  //         let count = 0, temp = 1
+  //         while(count < marks.length){ marks[i] < marks[count] ? temp++ && count++ : count++ }
+  //         if(temp <= k){ans++}
+  //     }
+  // }
+  // return ans
+  
+  //  Initial attempt took too long 
+  let end = marks.sort().sort((a,b) => a - b).reverse()
+  for(let i = 0;i <= end.length-1; i++){
+      if(i >= k && end[i] != end[i-1]){ end = end.slice(0, i) }
+  }
+  while(end.includes(0)){end.pop()}
+  return end.length
+}
