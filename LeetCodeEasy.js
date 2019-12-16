@@ -136,4 +136,71 @@ var mergeTwoLists = function(l1, l2) {
   return ans
 };
 
-//lists are not sorted at all and you have to sort them evn past the parallel values, the entire new list node has to be sorted, description for this is super bad, especially for an easy question 
+//lists are not sorted at all and you have to sort them even past the parallel values, the entire new list node has to be sorted, description for this is super bad, especially for an easy question 
+//just realized its just a merge sort 
+
+var mergeTwoLists = function(l1, l2) {
+  if(l1 == null){return l2}
+  else if(l2 == null){return l1}
+  let ans, tail, list=[l1.val,l2.val]
+  while(l1.next != null || l2.next != null){
+    if(l1.next == null){
+      l2 = l2.next
+      list.push(l2.val)
+    }
+    else if(l2.next == null){
+      l1 = l1.next
+      list.push(l1.val)
+    }
+    else {
+      l1 = l1.next
+      l2 = l2.next
+      list.push(l1.val)
+      list.push(l2.val)
+    }
+  }
+  list.sort((a,b) => a-b)
+  ans = new Node(list[0])
+  tail = ans
+  for(let i = 1;i < list.length;i++){ 
+    tail.next = new Node(list[i])
+    tail = tail.next
+  }
+  return ans
+};
+
+//this works but isn't the best way
+
+function Head(){
+  this.head = null;
+}
+var mergeTwoLists = function(l1, l2) {
+  if(l1 == null){return l2}
+  else if(l2 == null){return l1}
+  let ans = new Head, tail = ans, cont = true
+  while(cont){
+    if(l1 == null && l2 == null){ cont = false }
+    else if(l1 == null){
+      tail.next = l2
+      tail = tail.next
+      l2 = l2.next
+    }
+    else if(l2 == null){
+      tail.next = l1
+      tail = tail.next
+      l1 = l1.next
+    }
+    else if(l1.val < l2.val){
+        tail.next = l1
+        tail = tail.next
+        l1 = l1.next
+    }
+    else{
+        tail.next = l2
+        tail = tail.next
+        l2 = l2.next
+    }
+  }
+  return ans.next
+};
+// uses less memory and is faster by 8 ms
