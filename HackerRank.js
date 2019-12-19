@@ -190,3 +190,18 @@ function shortestSubstring(s) {
   }
   return ans
 }
+
+
+function priceCheck(products, productPrices, productSold, soldPrice) {
+  let ans = 0
+  for(let i =0;i < productSold.length;i++){
+      let count = 0
+      while(productSold[i] != products[count]){
+          count++
+      }
+      if(soldPrice[i] != productPrices[count]){
+          ans++
+      }
+  }
+  return ans
+}
