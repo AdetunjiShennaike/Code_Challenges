@@ -155,7 +155,7 @@ function numofPrizes(k, marks) {
   //     }
   // }
   // return ans
-  
+
   //  Initial attempt took too long 
   let end = marks.sort().sort((a,b) => a - b).reverse()
   for(let i = 0;i <= end.length-1; i++){
@@ -163,4 +163,30 @@ function numofPrizes(k, marks) {
   }
   while(end.includes(0)){end.pop()}
   return end.length
+}
+
+
+
+function shortestSubstring(s) {
+  let ans = s.length, temp = s.length, needed = Array.from(new Set(s.split(''))).sort()
+  for(let i = 0;i < s.length;i++){ 
+      let count = (needed.length) + i
+      for(let j = 0;j < needed.length;j++){
+          if(s.slice(i,count).length < needed.length || count > s.length){
+              return ans
+          }
+          if(s.slice(i,count).length > ans){
+              break
+          }
+          if(!s.slice(i,count).includes(needed[j])){
+              j -= 1
+              count++
+          }
+          if(j == needed.length-1){
+              temp = s.slice(i,count).length
+          }
+      }
+      if(temp < ans){ans = temp}
+  }
+  return ans
 }
