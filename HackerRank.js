@@ -205,3 +205,14 @@ function priceCheck(products, productPrices, productSold, soldPrice) {
   }
   return ans
 }
+
+
+
+function subsetA(arr) {
+  let setA = [0], setB = arr.sort((a,b) => a - b).reverse()
+  while(setA.reduce((a,c) => a+c) <  setB.reduce((a,c) => a+c)){
+  setA.push(setB[0]) 
+  setB = setB.slice(1, setB.length)
+  }
+  return setA.sort((a,b) => a - b).slice(1,setA.length)
+}
