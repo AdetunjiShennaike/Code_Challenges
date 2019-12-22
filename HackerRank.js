@@ -216,3 +216,15 @@ function subsetA(arr) {
   }
   return setA.sort((a,b) => a - b).slice(1,setA.length)
 }
+
+
+function countApplesAndOranges(s, t, a, b, apples, oranges) {
+  let app = 0, ora = 0
+  for(let i =0;i < apples.length;i++){
+    if(t >= (a + apples[i]) && (a + apples[i]) >= s){ app++ }
+  }
+  for(let i =0;i < oranges.length;i++){
+    if(s <= (b + oranges[i]) && (b + oranges[i]) <= t){ ora++ }
+  }
+  console.log(`${app}\n${ora}`)
+}
