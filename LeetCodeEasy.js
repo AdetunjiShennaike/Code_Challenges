@@ -237,3 +237,12 @@ var strStr = function(haystack, needle) {
   return ans
 };
 
+
+// Question 35 Search Insert Position
+var searchInsert = function(nums, target) {
+  if(nums.includes(target)){ return nums.indexOf(target) }
+  for(let i = 0;i < nums.length;i++){
+      if(nums[i] > target){ return i }
+      if(i == nums.length - 1){ return nums.length}
+  }
+};
