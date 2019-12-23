@@ -206,13 +206,25 @@ var mergeTwoLists = function(l1, l2) {
 // uses less memory and is faster by 8 ms
 
 
-// 26. Remove Duplicates from Sorted Array
+// Question 26 Remove Duplicates from Sorted Array
 var removeDuplicates = function(nums) {
   for(let i = 1;i < nums.length;i++){
     if(nums[i] == nums[i-1]){
       nums.splice(i,1)
       i--
     }
+  }
+  return nums.length
+};
+
+
+// Question 27 Remove Element
+var removeElement = function(nums, val) {
+  for(let i = 0;i < nums.length;i++){
+      if(nums[i] == val){
+          nums.splice(i,1)
+          i--
+      }
   }
   return nums.length
 };
