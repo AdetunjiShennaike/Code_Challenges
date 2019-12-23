@@ -228,3 +228,12 @@ var removeElement = function(nums, val) {
   }
   return nums.length
 };
+
+
+// Question 28 Implement strStr()
+var strStr = function(haystack, needle) {
+  let ans = 0
+  haystack.includes(needle) ? ans = haystack.indexOf(needle) : ans = -1
+  return ans
+};
+
