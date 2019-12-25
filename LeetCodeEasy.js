@@ -311,3 +311,15 @@ var lengthOfLastWord = function(s) {
   if(ans.length == 0){ return 0 }
   return ans[ans.length-1].length
 };
+
+
+// Question 66 Plus One
+var plusOne = function(digits) {
+  let count = digits.length - 1
+  while(digits[count] == 9){
+      digits[count] = 0
+      count--
+  }
+  count < 0 ? digits.unshift(1) : digits[count]++
+  return digits
+};
