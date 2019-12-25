@@ -303,3 +303,11 @@ var maxSubArray = function(nums) {
   }
     return ans
 };
+
+
+// Question 58 Length of Last Word
+var lengthOfLastWord = function(s) {
+  let ans = s.trimEnd().split(' ')
+  if(ans.length == 0){ return 0 }
+  return ans[ans.length-1].length
+};
