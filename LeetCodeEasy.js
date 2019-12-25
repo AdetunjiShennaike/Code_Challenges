@@ -246,3 +246,28 @@ var searchInsert = function(nums, target) {
       if(i == nums.length - 1){ return nums.length}
   }
 };
+
+
+// Question 38 Count and Say
+var countAndSay = function(n) {
+  if(n == 1){
+      return '1'
+  }
+  let arr = [], count = [], ans = ""
+  countAndSay(n-1).split('').forEach((e,i) => {
+      if(arr.includes(e) && arr[arr.indexOf(e)+1] != e){
+          count[arr.length - 1] += 1
+      }
+      else{
+          arr.push(e)
+          count.push(1)
+      }
+  })
+  for(let i = 0;i < arr.length;i++){
+      ans += `${count[i]}${arr[i]}`
+  }
+  console.log(arr, count, ans)
+  return ans
+};
+
+//doesn't output the right info yet, figuring out how to skip to insert a value when the previous is different 
