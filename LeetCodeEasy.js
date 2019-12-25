@@ -266,7 +266,6 @@ var countAndSay = function(n) {
   for(let i = 0;i < arr.length;i++){
       ans += `${count[i]}${arr[i]}`
   }
-  console.log(arr, count, ans)
   return ans
 };
 
@@ -289,7 +288,18 @@ var countAndSay = function(n) {
   for(let i = 0;i < arr.length;i++){
       ans += `${count[i]}${arr[i]}`
   }
-  console.log(arr, count, ans)
   return ans
 };
 //just changed the if statement
+
+
+// Question 53 Maximum Subarray
+var maxSubArray = function(nums) {
+  let ans = nums[0], temp = 0
+  for(let i = 0;i < nums.length;i++){
+      temp += nums[i]
+      if(temp > ans){ ans = temp }
+      if(temp < 0){ temp = 0 }
+  }
+    return ans
+};
