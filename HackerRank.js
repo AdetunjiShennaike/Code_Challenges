@@ -228,3 +228,10 @@ function countApplesAndOranges(s, t, a, b, apples, oranges) {
   }
   console.log(`${app}\n${ora}`)
 }
+
+
+function kangaroo(x1, v1, x2, v2) {
+  if((x1<x2 && v1<=v2) || (x1>x2 && v1>=v2)){ return "NO" }
+  if(x1 == x2){ return "YES" }
+  return kangaroo((x1 + v1), v1, (x2 + v2), v2)
+}
