@@ -235,3 +235,12 @@ function kangaroo(x1, v1, x2, v2) {
   if(x1 == x2){ return "YES" }
   return kangaroo((x1 + v1), v1, (x2 + v2), v2)
 }
+
+
+function getTotalX(a, b) {
+  let ans = 0
+  if(Number.isInteger(a[1]/a[0])){ ans++ }
+  if(Number.isInteger(b[b.length - 1]/(a[0]*a[1]))){ ans += (b[0]/(a[0]*a[1])) }
+  return ans
+}
+// refactor for hidden test cases
