@@ -323,3 +323,52 @@ var plusOne = function(digits) {
   count < 0 ? digits.unshift(1) : digits[count]++
   return digits
 };
+
+
+// Question 67 Add Binary
+
+var addBinary = function(a, b) {
+  let arrA = a.split('').reverse(), arrB = b.split('').reverse(), length, output = [], temp
+  arrA.length > arrB.length ? length = arrA.length : length = arrB.length
+  for(let i =0;i <= length;i++){
+    if(!arrA[i] && !arrB[i] && temp != '1'){
+      return output.reverse().join('')
+    }
+    else if(!arrA[i] && temp != '1'){
+      output.push(arrB[i])
+    }
+    else if(!arrB[i] && temp != '1'){
+      output.push(arrA[i])
+    }
+    else if(temp == '1'){
+      if(arrA[i] == '1' && arrB[i] == '1'){
+        output.push('1')
+        temp = '1'
+      }
+      else if((arrA[i] == '0'|| !arrA[i]) && arrB[i] == '1'){
+        output.push('0')
+        temp = '1'
+      }
+      else if(arrA[i] == '1' && (arrB[i] == '0'|| !arrB[i])){
+        output.push('0')
+        temp = '1'
+      }
+      else{
+        output.push('1')
+        temp = '0'
+      }
+    }
+    else if(arrA[i] != arrB[i]){
+      output.push('1')
+    }
+    else if(arrA[i] == arrB[i] && arrA[i] != '0'){
+      output.push('0')
+      temp = '1'
+    }
+    else{
+      output.push('0')
+    }
+  }
+  return output.reverse().join('')
+};
+
