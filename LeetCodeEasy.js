@@ -372,3 +372,20 @@ var addBinary = function(a, b) {
   return output.reverse().join('')
 };
 
+
+// Question 69 Sqrt(x)
+var mySqrt = function(x) {
+  return Math.floor(Math.sqrt(x))
+};
+
+var mySqrt = function(x) {
+  if(x == 0){ return x }
+  for(let i = 0;i <= x;i++){
+    if((i*i) == x){
+      return i
+    }
+    if((i*i) > x){
+      return i-1
+    }
+  }
+};// without math library
