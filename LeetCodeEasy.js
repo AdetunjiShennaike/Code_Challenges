@@ -412,3 +412,24 @@ var climbStairs = function(n, cache = null) {
 };
 
 
+// Question 83 Remove Duplicates from Sorted List
+function ListNode(val) {
+  this.val = val;
+  this.next = null;
+}
+
+var deleteDuplicates = function(head) {
+  if(!head){ return head }
+  let temp = head.next, check = head
+  while(temp != null){
+    if(temp.val == check.val){
+      temp = temp.next
+      check.next = temp
+    }
+    else{
+      check = temp
+      temp = temp.next
+    }
+  }
+  return head
+};
