@@ -392,10 +392,23 @@ var mySqrt = function(x) {
 
 
 // Question 70 Climbing Stairs
-var climbStairs = function(n) {
+var climbStairs = function(n, cache = null) {
+  if (cache == null){ 
+    cache = []
+    for(let i = 0;i <= n;i++){ 
+      cache.push[0]
+    } 
+  }
+                     
   if(n == 0){ return 0 }
   if(n == 1){ return 1 }
   if(n == 2){ return 2 }
   
-  return climbStairs(n-1) + climbStairs(n-2)
+  if(cache[n] == undefined) {
+    cache[n] = climbStairs(n-1, cache) + climbStairs(n-2, cache)
+  }
+  
+  return cache[n]
 };
+
+
