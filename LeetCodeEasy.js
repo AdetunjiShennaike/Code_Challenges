@@ -433,3 +433,28 @@ var deleteDuplicates = function(head) {
   }
   return head
 };
+
+
+// Question 88 Merge Sorted Array
+var merge = function(nums1, m, nums2, n) {
+  let count = 0, trace = 0, check = m
+  while(count < (m + n)){
+    if(nums1[count] > nums2[trace]){
+      nums1.splice(count, 0, nums2[trace])
+      nums1.pop()
+      count++
+      trace++
+      check++
+    }
+    else if(nums1[count] == 0 && count >= check){
+      nums1.splice(count, 0, nums2[trace])
+      nums1.pop()
+      count++
+      trace++
+      check++
+    }
+    else{
+      count++
+    }
+  }
+};
