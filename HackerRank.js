@@ -217,6 +217,26 @@ function subsetA(arr) {
   return setA.sort((a,b) => a - b).slice(1,setA.length)
 }
 
+function subsetA(arr) {
+  arr.sort((a,b) => a - b)
+  let setA = arr.splice(0, arr.length/2)
+  let a = arr.reduce((a,c) => a+c), b = setA.reduce((a,c) => a+c)
+  while(a > b){
+    a -= arr[0]
+    b += arr[0]
+    setA.push(arr[0])
+    arr.shift()
+  }
+  while(a <= b){
+    a += arr[0]
+    b -= arr[0]
+    arr.unshift(setA[setA.length-1]) 
+    setA.pop()
+  }
+  console.log(arr.length, setA.length, a, b)
+  return arr
+}//much better time complexity and passes all test
+
 
 function countApplesAndOranges(s, t, a, b, apples, oranges) {
   let app = 0, ora = 0
