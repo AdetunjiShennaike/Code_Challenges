@@ -264,3 +264,31 @@ function getTotalX(a, b) {
   return ans
 }
 // refactor for hidden test cases
+
+
+function getTotalX(a, b) {
+  let check = [], ans = [], count
+  for(let i = a[0]; i <= b[0];i++){
+    count = 0
+    for(let j = 0;j < a.length;j++){
+      if(i % a[j] == 0){
+        count++
+      }
+    }
+    if(count == a.length){
+      check.push(i)
+    }
+  }
+  for(let i = 0;i < check.length;i++){
+    count = 0
+    for(let j = 0;j < b.length;j++){
+      if(b[j] % check[i] == 0){
+        count++
+      }
+    }
+    if(count == b.length){
+      ans.push(check[i])
+    }
+  }
+  return ans.length
+}
