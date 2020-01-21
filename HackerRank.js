@@ -292,3 +292,20 @@ function getTotalX(a, b) {
   }
   return ans.length
 }
+
+
+
+function breakingRecords(scores) {
+  let low = scores[0], high = scores[0], la = [], ha = []
+  for(let i = 1;i < scores.length;i++){
+    if(scores[i] > high){ 
+      ha.push(scores[i])
+      high = scores[i]
+    }
+    if(scores[i] < low){ 
+      la.push(scores[i]) 
+      low = scores[i]
+    }
+  }
+  return [ha.length, la.length]
+}
