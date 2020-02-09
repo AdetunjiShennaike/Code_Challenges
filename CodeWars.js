@@ -408,3 +408,65 @@ function abbreviate(string) {
   string = temp.join(' ')
   return string
 }
+
+
+/*
+Given a number, return a string with dash'-'marks before and after each odd integer, but do not begin or end the string with a dash mark.
+
+Ex:
+
+dashatize(274) -> '2-7-4'
+dashatize(6815) -> '68-1-5'
+
+*/
+
+function dashatize(num) {
+  if(isNaN(num)){return 'NaN'}
+  let sprt = [], ans = ""
+  num > 0 ? sprt = num.toString().split('') : sprt = Math.abs(num).toString().split('')
+  
+  if(sprt.length == 1) {return sprt[0]}
+  //add a dash before and after all odd numbers
+  for(let i = 0; i < sprt.length;i++){
+    if (i == 0 && parseInt(sprt[i]) % 2 != 0) {
+      ans += (`${sprt[i]}-`)
+    }
+    else if(i == (sprt.length-1) && parseInt(sprt[i]) % 2 != 0) {
+      if(ans[ans.length-1].includes('-')){
+        ans += (`${sprt[i]}`) 
+      }
+      else {
+        ans += (`-${sprt[i]}`)
+      }
+    }
+    else if(parseInt(sprt[i]) % 2 != 0) {
+      if(ans[ans.length-1].includes('-')){
+        ans += (`${sprt[i]}-`)
+      }
+      else {
+        ans += (`-${sprt[i]}-`)
+      }
+    }
+    else {
+      ans += (`${sprt[i]}`)
+    }
+  }
+  //remove dashes from beginning and end
+  //remove double dashes
+  return ans
+}
+
+
+function order(words){
+  if(words.length == 0){ return words}
+  let newString = [], split = words.split(' ')
+  for(i = 1; i< 10; i++){
+    split.forEach( n => {
+      if(n.includes(`${i}`)){
+        newString.push(n)
+        break
+      }
+    })
+  }
+  return newString.join(' ')
+}
