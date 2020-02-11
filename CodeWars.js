@@ -517,7 +517,28 @@ function presses(phrase) {
 
 
 
+/*
+Given an array, find the integer that appears an odd number of times.
 
+There will always be only one integer that appears an odd number of times.
+*/
+
+
+function findOdd(A) {
+  let ans = [], amount = []
+  //Make two lists 1 for inputs and other for the amount of appearance
+  A.forEach( e => {
+    if(ans.includes(e)){amount[ans.indexOf(e)]++}
+    else {
+      ans.push(e)
+      amount.push(1)
+    }
+  })
+  //check for the odd amount and return its corresponding value
+  for(let i = 0;i < amount.length;i++){
+    if(amount[i] % 2 != 0){ return ans[i] }
+  }
+}
 
 function order(words){
   if(words.length == 0){ return words}
