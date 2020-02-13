@@ -378,3 +378,31 @@ function divisibleSumPairs(n, k, ar) {
   }
   return ans
 }
+
+
+
+function migratoryBirds(arr) {
+  //set variables for counting the different types of birds
+  let type = [], num = [], high = 0, low = 5
+  //set a loop that will add which birds were spotted and how many 
+  arr.forEach( e => {
+    if(type.includes(e)){
+      num[type.indexOf(e)]++
+    }
+    else{
+      type.push(e)
+      num.push(1)
+    }
+  })
+  //find the bird(s) with the highest occurrence and return it
+  for(let i = 0;i < num.length;i++){
+    if(num[i] > high){
+      high = num[i]
+      low = type[i]
+    }
+    if(num[i] == high && type[i] < low){
+      low = type[i]
+    }
+  }
+  return low
+}
