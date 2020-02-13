@@ -322,17 +322,16 @@ function birthday(s, d, m) {
     count = 1
     temp = s[i]
     for(let j = i+1;j < s.length;j++){
-      if(count == m && temp == d){
-        ans++
-        break
-      }
       if(temp + s[j] > d){
         break  
       }
       temp += s[j]
       count++
+      if(count == m && temp == d){
+        ans++
+        break
+      }
     }
   }
   return ans
 }
-// works but wont pass the submit, even though copying and pasting the same exact test into the custom input passes
