@@ -322,15 +322,58 @@ function birthday(s, d, m) {
     count = 1
     temp = s[i]
     for(let j = i+1;j < s.length;j++){
+      if(count == m && temp == d){
+        ans++
+        break
+      }
       if(temp + s[j] > d){
         break  
       }
       temp += s[j]
       count++
+    }
+  }
+  return ans
+}
+// works but wont pass the submit, even though copying and pasting the same exact test into the custom input passes
+
+function birthday(s, d, m) {
+  //set variables
+  let ans = 0, temp, count
+  //edge case where the number of squares is 1
+  if(m == 1) { 
+    s.forEach(e => {if(e == d){ ans++ }})
+    return ans
+  }
+  for(let i = 0;i < s.length;i++){
+    //set a counter for the number of squares
+    count = 1
+    temp = s[i]
+    for(let j = i+1;j < s.length;j++){
+      //if you exceed the target value end the loop to save time
+      if(temp + s[j] > d){
+        break  
+      }
+      temp += s[j]
+      count++
+      //if you find a matching consecutive amount with the right number of squares end the loop to save time
       if(count == m && temp == d){
         ans++
         break
       }
+    }
+  }
+  return ans
+}
+//had to change the order to count when j is at the end of the 
+
+
+function divisibleSumPairs(n, k, ar) {
+  let ans = 0
+  //check for all values that divide by the target evenly(not decimal) by double looping through the array
+  for(let i = 0;i < n;i++){
+    for(let j = i + 1;j < n;j++){
+      if((ar[i] + ar[j]) % k == 0){ ans++ }
     }
   }
   return ans
