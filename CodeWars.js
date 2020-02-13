@@ -540,6 +540,8 @@ function findOdd(A) {
   }
 }
 
+
+//helping kimberly
 function order(words){
   if(words.length == 0){ return words}
   let newString = [], split = words.split(' ')
@@ -553,3 +555,4 @@ function order(words){
   }
   return newString.join(' ')
 }
+

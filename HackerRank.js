@@ -309,3 +309,30 @@ function breakingRecords(scores) {
   }
   return [ha.length, la.length]
 }
+
+
+
+function birthday(s, d, m) {
+  let ans = 0, temp, count
+  if(m == 1) { 
+    s.forEach(e => {if(e == d){ ans++ }})
+    return ans
+  }
+  for(let i = 0;i < s.length;i++){
+    count = 1
+    temp = s[i]
+    for(let j = i+1;j < s.length;j++){
+      if(count == m && temp == d){
+        ans++
+        break
+      }
+      if(temp + s[j] > d){
+        break  
+      }
+      temp += s[j]
+      count++
+    }
+  }
+  return ans
+}
+// works but wont pass the submit, even though copying and pasting the same exact test into the custom input passes
