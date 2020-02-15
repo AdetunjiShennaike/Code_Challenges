@@ -44,3 +44,20 @@ function sortAlpha(strArr) {
 }
 
 sortAlpha(strings);
+
+
+function reverseCase(str){
+  let ans = str.split(''), res = ''
+  ans.forEach( e => {
+    if(e === e.toUpperCase()){
+      res += e.toLowerCase()
+    }
+    else {
+      res += e.toUpperCase()
+    }
+  })
+  return res
+}
+
+const string = 'HELLO world!'
+reverseCase(string)
