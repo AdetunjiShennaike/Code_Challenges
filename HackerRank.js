@@ -406,3 +406,31 @@ function migratoryBirds(arr) {
   }
   return low
 }
+
+
+
+function dayOfProgrammer(year) {
+  //set variables for the output and for adding months while looking for the 256th day
+  let count = 0, day = 0, month = 0 
+  let months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+  //set february specifically for 1918
+  if(year == 1918){ months[1] = 15 }
+  //make a loop for all year aside from 1918
+  while(count + months[month] < 256){
+    count += months[month]
+    month++
+  }
+  //the remaining days left from adding months is the day of that month, add 1 to month to match
+  day = 256 - count
+  month++
+  //check for leap years
+  if(((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) && year > 1918){ day-- }
+  if(year % 4 == 0 && year < 1918){ day-- }
+  //print the date
+  if(month < 10){
+    return `${day}.0${month}.${year}`
+  }
+  else{
+    return `${day}.${month}.${year}`
+  }
+}
