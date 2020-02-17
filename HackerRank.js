@@ -434,3 +434,18 @@ function dayOfProgrammer(year) {
     return `${day}.${month}.${year}`
   }
 }
+
+
+
+function bonAppetit(bill, k, b) {
+  let ans = 0
+  // loop through the bill and check how much should be divided by the two
+  for(let i = 0;i < bill.length;i++){
+    if(i != k){ ans += bill[i]}
+  }
+  //divide the sum in two
+  ans = ans / 2
+  //if the bill is correct print, if not return what is owed
+  if(ans == b){ console.log('Bon Appetit') }
+  else { console.log(b - ans) }
+}
