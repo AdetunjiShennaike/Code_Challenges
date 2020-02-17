@@ -449,3 +449,24 @@ function bonAppetit(bill, k, b) {
   if(ans == b){ console.log('Bon Appetit') }
   else { console.log(b - ans) }
 }
+
+
+function sockMerchant(n, ar) {
+  // setup variables for finding the pairs
+  let type = [], amt = [], pairs = 0
+  // loop through the socks and find how many times a type of sock shows
+  ar.forEach( e => {
+    if(type.includes(e)){
+      amt[type.indexOf(e)]++
+    }
+    else{
+      type.push(e)
+      amt.push(1)
+    }
+  })
+  // add all of the pairs
+  amt.forEach( e => {
+    pairs += Math.floor(e/2)
+  })
+  return pairs
+  }
