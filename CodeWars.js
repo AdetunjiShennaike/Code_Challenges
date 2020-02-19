@@ -613,10 +613,14 @@ a or b are empty or not empty lists.
 */
 
 function comp(array1, array2){
+  //if either is null its false
   if(!array1 || !array2) return false
+  //if they are both empty strings its true
   if(array1.length == 0 && array2.length == 0) return true
+  //put the numbers in order
   array1.sort((a,b) => a-b)
   array2.sort((a,b) => a-b)
+  //check 1 by 1 if they are squared accurately if not false
   for(let i = 0;i < array1.length;i++){
     if(array1[i]*array1[i] != array2[i]) return false
   }
