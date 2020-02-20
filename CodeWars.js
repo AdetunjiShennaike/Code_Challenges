@@ -651,3 +651,52 @@ function domainName(url){
     console.log(url, str)
     return ans
   }
+
+/*
+Jamie is a programmer, and James' girlfriend. She likes diamonds, and wants a diamond string from James. Since James doesn't know how to make this happen, he needs your help.
+
+Task
+You need to return a string that looks like a diamond shape when printed on the screen, using asterisk (*) characters. Trailing spaces should be removed, and every line must be terminated with a newline character (\n).
+
+Return null/nil/None/... if the input is an even number or negative, as it is not possible to print a diamond of even or negative size.
+
+Examples
+A size 3 diamond:
+
+ *
+***
+ *
+...which would appear as a string of " *\n***\n *\n"
+
+A size 5 diamond:
+
+  *
+ ***
+*****
+ ***
+  *
+...that is: " *\n ***\n*****\n ***\n *\n"
+*/
+
+  function diamond(n){
+    //make if statement for less than 1 and even numbers
+    if(n <= 0 || n % 2 == 0){ return null }
+    //create the middle point for when the stars decrease
+    let mid = Math.ceil(n/2), ans = '', space = ' ', star = '*', count = 1
+    //use case for n = 1 
+    if(n == 1){ return '*\n' }
+    //make more stars till the middle
+    for(let i = 1;i <= n;i += 2){
+      if(i == n) { ans += `${star.repeat(i)}\n`}
+      else { ans += `${space.repeat(mid - count)}${star.repeat(i)}\n` }
+      count++
+    }
+    //at the middle start taking away stars
+    count = mid - 1
+    for(let i = n - 1;i > 0;i -= 2){
+      if(i % 2 == 0){ i-- }
+      ans += `${space.repeat(mid - count)}${star.repeat(i)}\n`
+      count--
+    }
+    return ans;
+  }
