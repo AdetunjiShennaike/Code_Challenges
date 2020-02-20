@@ -626,3 +626,28 @@ function comp(array1, array2){
   }
   return true
 }
+
+
+/*
+Write a function that when given a URL as a string, parses out just the domain name and returns it as a string. For example:
+
+domainName("http://github.com/carbonfive/raygun") == "github" 
+domainName("http://www.zombie-bites.com") == "zombie-bites"
+domainName("https://www.cnet.com") == "cnet"
+*/
+
+function domainName(url){
+  let arr, str, ans
+    //search the url to see if it has www or http(s)
+    if(url.toLowerCase().includes('www')){
+      arr = url.split('.'), ans = arr[1]
+    }
+    else if(url.includes('//')){
+      arr = url.split('//'), str = arr[1].split('.'), ans = str[0]
+    }
+    else {
+      arr = url.split('.'), ans = arr[0]
+    }
+    console.log(url, str)
+    return ans
+  }
