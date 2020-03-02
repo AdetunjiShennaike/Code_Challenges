@@ -678,25 +678,56 @@ A size 5 diamond:
 ...that is: " *\n ***\n*****\n ***\n *\n"
 */
 
-  function diamond(n){
-    //make if statement for less than 1 and even numbers
-    if(n <= 0 || n % 2 == 0){ return null }
-    //create the middle point for when the stars decrease
-    let mid = Math.ceil(n/2), ans = '', space = ' ', star = '*', count = 1
-    //use case for n = 1 
-    if(n == 1){ return '*\n' }
-    //make more stars till the middle
-    for(let i = 1;i <= n;i += 2){
-      if(i == n) { ans += `${star.repeat(i)}\n`}
-      else { ans += `${space.repeat(mid - count)}${star.repeat(i)}\n` }
-      count++
-    }
-    //at the middle start taking away stars
-    count = mid - 1
-    for(let i = n - 1;i > 0;i -= 2){
-      if(i % 2 == 0){ i-- }
-      ans += `${space.repeat(mid - count)}${star.repeat(i)}\n`
-      count--
-    }
-    return ans;
+function diamond(n){
+  //make if statement for less than 1 and even numbers
+  if(n <= 0 || n % 2 == 0){ return null }
+  //create the middle point for when the stars decrease
+  let mid = Math.ceil(n/2), ans = '', space = ' ', star = '*', count = 1
+  //use case for n = 1 
+  if(n == 1){ return '*\n' }
+  //make more stars till the middle
+  for(let i = 1;i <= n;i += 2){
+    if(i == n) { ans += `${star.repeat(i)}\n`}
+    else { ans += `${space.repeat(mid - count)}${star.repeat(i)}\n` }
+    count++
   }
+  //at the middle start taking away stars
+  count = mid - 1
+  for(let i = n - 1;i > 0;i -= 2){
+    if(i % 2 == 0){ i-- }
+    ans += `${space.repeat(mid - count)}${star.repeat(i)}\n`
+    count--
+  }
+  return ans;
+}
+
+
+/*
+Create a function that accepts dimensions, of Rows x Columns, as parameters in order to create a multiplication table sized according to the given dimensions. **The return value of the function must be an array, and the numbers must be Fixnums, NOT strings.
+
+Example:
+
+multiplication_table(3,3)
+
+1 2 3
+2 4 6
+3 6 9
+
+-->[[1,2,3],[2,4,6],[3,6,9]]
+
+Each value on the table should be equal to the value of multiplying the number in its first row times the number in its first column.
+*/
+
+
+function multiplicationTable(row,col){
+  let ans = []
+  for(let i = 0;i < row;i++){
+    let temp = []
+    for(let j = 0;j < col;j++){
+      let cur = (j+1) * (i+1)
+      temp.push(cur)
+    }
+    ans.push(temp)
+  }
+  return ans
+}
