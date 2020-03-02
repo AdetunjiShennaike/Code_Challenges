@@ -458,3 +458,123 @@ var merge = function(nums1, m, nums2, n) {
     }
   }
 };
+
+
+// Question 1275 Find Winner on a Tic Tac Toe Game
+var tictactoe = function(moves) {
+  let A = [], B = []
+  for(let i = 0;i < moves.length;i++){
+      if(i == 0 || i % 2 == 0){
+          if(moves[i][0] == 0 && moves[i][1] == 0){
+              A.push(1)
+          }
+          else if(moves[i][0] == 0 && moves[i][1] == 1){
+              A.push(2)
+          }
+          else if(moves[i][0] == 0 && moves[i][1] == 2){
+              A.push(3)
+          }
+          else if(moves[i][0] == 1 && moves[i][1] == 0){
+              A.push(4)
+          }
+          else if(moves[i][0] == 1 && moves[i][1] == 1){
+              A.push(5)
+          }
+          else if(moves[i][0] == 1 && moves[i][1] == 2){
+              A.push(6)
+          }
+          else if(moves[i][0] == 2 && moves[i][1] == 0){
+              A.push(7)
+          }
+          else if(moves[i][0] == 2 && moves[i][1] == 1){
+              A.push(8)
+          }
+          else {
+              A.push(9)
+          }
+      }
+      else {
+          if(moves[i][0] == 0 && moves[i][1] == 0){
+              B.push(1)
+          }
+          else if(moves[i][0] == 0 && moves[i][1] == 1){
+              B.push(2)
+          }
+          else if(moves[i][0] == 0 && moves[i][1] == 2){
+              B.push(3)
+          }
+          else if(moves[i][0] == 1 && moves[i][1] == 0){
+              B.push(4)
+          }
+          else if(moves[i][0] == 1 && moves[i][1] == 1){
+              B.push(5)
+          }
+          else if(moves[i][0] == 1 && moves[i][1] == 2){
+              B.push(6)
+          }
+          else if(moves[i][0] == 2 && moves[i][1] == 0){
+              B.push(7)
+          }
+          else if(moves[i][0] == 2 && moves[i][1] == 1){
+              B.push(8)
+          }
+          else {
+              B.push(9)
+          }
+      }
+  }
+  if(A.includes(1) && A.includes(2) && A.includes(3)){
+      return 'A'
+  }
+  else if(A.includes(1) && A.includes(4) && A.includes(7)){
+      return 'A'
+  }
+  else if(A.includes(1) && A.includes(5) && A.includes(9)){
+      return 'A'
+  }
+  else if(A.includes(3) && A.includes(5) && A.includes(7)){
+      return 'A'
+  }
+  else if(A.includes(4) && A.includes(5) && A.includes(6)){
+      return 'A'
+  }
+  else if(A.includes(7) && A.includes(8) && A.includes(9)){
+      return 'A'
+  }
+  else if(A.includes(2) && A.includes(5) && A.includes(8)){
+      return 'A'
+  }
+  else if(A.includes(3) && A.includes(6) && A.includes(9)){
+      return 'A'
+  }
+  else if(B.includes(1) && B.includes(2) && B.includes(3)){
+      return 'B'
+  }
+  else if(B.includes(1) && B.includes(4) && B.includes(7)){
+      return 'B'
+  }
+  else if(B.includes(1) && B.includes(5) && B.includes(9)){
+      return 'B'
+  }
+  else if(B.includes(3) && B.includes(5) && B.includes(7)){
+      return 'B'
+  }
+  else if(B.includes(4) && B.includes(5) && B.includes(6)){
+      return 'B'
+  }
+  else if(B.includes(7) && B.includes(8) && B.includes(9)){
+      return 'B'
+  }
+  else if(B.includes(2) && B.includes(5) && B.includes(8)){
+      return 'B'
+  }
+  else if(B.includes(3) && B.includes(6) && B.includes(9)){
+      return 'B'
+  }
+  else if(moves.length == 9) {
+      return "Draw"
+  }
+  else {
+      return "Pending"
+  }
+};
