@@ -469,4 +469,13 @@ function sockMerchant(n, ar) {
     pairs += Math.floor(e/2)
   })
   return pairs
+}
+
+function countingValleys(n, s) {
+  let level = 1, ans = 0
+  for( let i = 0;i < n;i++ ){
+      if(level == 1 && s[i].includes('D')) { ans++ }
+      s[i].includes('U') ? level++ : level--
   }
+  return ans
+}
