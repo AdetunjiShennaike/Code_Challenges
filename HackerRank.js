@@ -479,3 +479,18 @@ function countingValleys(n, s) {
   }
   return ans
 }
+
+function pageCount(n, p) {
+  let ans = 0, temp = 0, low = n
+  if(n % 2 == 0){
+    temp = Math.ceil((n - p)/2) 
+    if(temp < low) low = temp
+  }
+  else {
+    temp = Math.floor((n-p)/2)
+    if(temp < low) low = temp
+  }
+  temp = Math.ceil((p-1)/2)
+  if(temp < low) low = temp
+  return low
+}
