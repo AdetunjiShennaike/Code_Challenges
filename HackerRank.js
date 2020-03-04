@@ -481,7 +481,7 @@ function countingValleys(n, s) {
 }
 
 function pageCount(n, p) {
-  let ans = 0, temp = 0, low = n
+  let temp = 0, low = n
   if(n % 2 == 0){
     temp = Math.ceil((n - p)/2) 
     if(temp < low) low = temp
@@ -493,4 +493,18 @@ function pageCount(n, p) {
   temp = Math.ceil((p-1)/2)
   if(temp < low) low = temp
   return low
+}
+
+
+function getMoneySpent(keyboards, drives, b) {
+  let high = 0
+  for(let i = 0;i < keyboards.length;i++){
+    for(let j = 0;j < drives.length;j++){
+      if((drives[j] + keyboards[i]) > high && (drives[j] + keyboards[i]) <= b){
+        high = drives[j] + keyboards[i]
+      }
+    }
+  }
+  if(high == 0) return -1
+  else return high
 }
