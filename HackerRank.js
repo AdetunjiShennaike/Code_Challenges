@@ -508,3 +508,10 @@ function getMoneySpent(keyboards, drives, b) {
   if(high == 0) return -1
   else return high
 }
+
+
+function catAndMouse(x, y, z) {
+  if(Math.abs(x-z) == Math.abs(y-z)) return 'Mouse C'
+  if(Math.abs(x-z) < Math.abs(y-z)) return 'Cat A'
+  else return 'Cat B'
+}
