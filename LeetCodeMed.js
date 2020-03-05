@@ -45,3 +45,19 @@ var addTwoNumbers = function(l1, l2) {
   if(rmd > 0) { tail.next = new ListNode(rmd) }
   return head.next
 };
+
+// Question 3. Longest Substring Without Repeating Characters
+
+var lengthOfLongestSubstring = function(s) {
+  let sub = ''
+  for(let i = 0;i < s.length;i++){
+    let temp = ''
+    if(sub.length > (s.length - (i+1))) { return sub.length }
+    for(let j = i;j < s.length;j++){
+      if(!temp.includes(s[j])){ temp += s[j] }
+      else{ break }
+    }
+    if(temp.length > sub.length) { sub = temp }
+  }
+  return sub.length
+};
