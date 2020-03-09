@@ -74,3 +74,4 @@ var lengthOfLongestSubstring = function(s) {
   }
   return sub.length
 };
+

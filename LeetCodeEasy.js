@@ -460,6 +460,22 @@ var merge = function(nums1, m, nums2, n) {
 };
 
 
+// Question 121. Best Time to Buy and Sell Stock
+
+var maxProfit = function(prices) {
+  let ans = 0, low = prices[0]
+  for(let i = 1;i < prices.length;i++){
+    if(prices[i] < low){
+      low = prices[i]
+    }
+    if(prices[i] - low > ans && prices[i] > low){
+      ans = prices[i] - low
+    }
+  }
+  return ans
+};
+
+
 // Question 1275 Find Winner on a Tic Tac Toe Game
 var tictactoe = function(moves) {
   let A = [], B = []
@@ -578,3 +594,4 @@ var tictactoe = function(moves) {
       return "Pending"
   }
 };
+
