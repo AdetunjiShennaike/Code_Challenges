@@ -75,3 +75,32 @@ var lengthOfLongestSubstring = function(s) {
   return sub.length
 };
 
+
+// Question 260. Single Number III
+
+var singleNumber = function(nums) {
+  // Make a 2 variable for counting and a return variable
+  let countN = [], count = [], ans =[] 
+  // Make a loop of the input
+  for(let i = 0;i < nums.length;i++) {    
+    // During the loop, we will check if the current item exist in the count variable
+    if(countN.includes(nums[i])){
+      // If a value does exist increase the count
+      count[countN.indexOf(nums[i])]++
+    }
+    else{
+      // If it does we push to to the first count array and input 1 in the second
+      countN.push(nums[i])
+      count.push(1)
+    }
+  }
+  // Loop through the count
+  for(let c = 0;c < count.length;c++){
+    // Check the count variable for items that only have 1
+    if(count[c] == 1){
+      // Push the elements with 1 to the return variable and return it
+      ans.push(countN[c])
+    }
+  }
+  return ans
+};
