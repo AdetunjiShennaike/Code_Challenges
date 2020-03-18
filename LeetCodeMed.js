@@ -120,3 +120,23 @@ for(let i = 0;i < nums.length;i++){
   }
 }
 return ans
+
+
+// Question 162. Find Peak Element
+
+var findPeakElement = function(nums) {
+  // The edgecase of an empty array
+  if(nums.length == 0) return nums
+  // The edgecase of either the first or last index being the peak or if there is only 1 item
+  if(nums[0] > nums[1] || nums.length == 1) return 0
+  let len = nums.length - 1
+  if(nums[len] > nums[len-1]) return len
+  // Start a for loop of the input starting with an index of 1 and skip the last index
+  for(let i = 1;i < len;i++){
+    // Check if the current index is greater than 1 prior and 1 later
+    if(nums[i] > nums[i-1] && nums[i] > nums[i+1]){
+      // If yes return the index
+      return i
+    }
+  }
+};
