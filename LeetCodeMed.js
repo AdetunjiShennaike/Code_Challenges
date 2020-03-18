@@ -104,3 +104,19 @@ var singleNumber = function(nums) {
   }
   return ans
 };
+// Hash Solution
+let count = {}, ans = []
+for(let i = 0;i < nums.length;i++){
+  if(count[nums[i]]){
+    count[nums[i]]++
+  }
+  else{
+    count[nums[i]] = 1
+  }
+}
+for(let i = 0;i < nums.length;i++){
+  if(count[nums[i]] == 1){
+    ans.push(nums[i])
+  }
+}
+return ans
