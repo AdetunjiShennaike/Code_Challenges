@@ -595,3 +595,29 @@ var tictactoe = function(moves) {
   }
 };
 
+
+// Question 231. Power of Two
+const isPowerOfTwo = function(n) {
+  // Take the given input and return true or false
+  // Set up the edgecase of n = 2 and n = 1
+  if(n == 2 || n == 1) return true
+  // Set up a for loop with the max value being half of the input
+  for(let i = 2;i <= (n/2);i++){
+    // Check all values of 2 to the power of the iterator excluding 0 and 1
+    if(2**i == n){
+      // If any return true stop all and return true, else false
+      return true
+    }
+  }
+}
+
+const isPowerOfTwo = function(n) {
+  // Time complexity to slow refactored version
+  // Set up the edgecase of n = 2 and n = 1
+  if(n == 2 || n == 1) return true
+  // Divide by two until the number is too small or the value is 2
+  else if(n > 2){
+  return  isPowerOfTwo(n/2)
+  }
+  return false
+}
