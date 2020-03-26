@@ -621,3 +621,31 @@ const isPowerOfTwo = function(n) {
   }
   return false
 }
+
+
+// Question 290. Word Pattern
+
+var wordPattern = function(pattern, str) {
+  // Make a hash to hold the pattern, string combinations
+  // Edge case if both inputs are empty return false
+  if(!pattern && !str) return false
+  // Make variables for the split and the test string and used strings
+  let patternHash = {}, alpha = pattern.split(''), beta = str.split(' '), used = '', test = []
+  // Use a for loop to fill the hash whenever a new character in the pattern appears
+  for(let i = 0;i < alpha.length;i++){
+    if(!patternHash[alpha[i]] && !used.includes(beta[i])){
+      patternHash[alpha[i]] = beta[i]
+      used += beta[i] + ' '
+    }
+  }
+  // Output from the hash the same sequence as the pattern
+  for(let i = 0;i < alpha.length;i++){
+    test.push(patternHash[alpha[i]])
+  }
+  // Check the pattern versus the str
+  if(test.join(' ') == str){
+    // If its the same return true, else return false
+    return true
+  }
+  return false
+};
