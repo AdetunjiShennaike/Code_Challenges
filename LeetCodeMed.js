@@ -140,3 +140,32 @@ var findPeakElement = function(nums) {
     }
   }
 };
+
+
+// Question 1338. Reduce Array Size to The Half
+
+var minSetSize = function(arr) {
+  // Select the minimum number of values in the array to dispose of half of the array
+  // Return for 2 length array input
+  if(arr.length == 2) return 1
+  // Create a hash for the number of appearances of each value, a counter, and new length
+  let theHash = {}, count = 0, curLength = arr.length
+  // Loop through the arr to fill in the hash
+  for(let i = 0;i < arr.length;i++){
+    if(theHash[arr[i]]){
+      theHash[arr[i]] += 1
+    }
+    else {
+      theHash[arr[i]] = 1
+    }
+  }
+  // Create an arr for the hash entries and sort it from highest to lowest
+  let hashE = Object.entries(theHash).sort((a,b) => b[1] - a[1])
+  while(curLength > arr.length/2){
+    // Subtract that count from the original array length and add 1 to the counter
+    curLength -= hashE[count][1]
+    count++  
+  }
+  // If the new length is less than half return count, else redo last two steps
+  return count
+};
