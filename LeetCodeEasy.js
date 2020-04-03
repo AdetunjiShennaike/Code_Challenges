@@ -793,3 +793,43 @@ var largestTimeFromDigits = function(A) {
   // If any of the previous fail return an empty string, else return the time
   return time
 };
+
+
+// Question 605. Can Place Flowers
+
+var canPlaceFlowers = function(flowerbed, n) {
+  // Check if flowers can be planted
+  // Make a count variable
+  let count = 0, start
+  
+  // If the length of the flowerbed
+  if(flowerbed.length == 1 && flowerbed[0] == 0) count++
+  
+  // Check if the first and second index have any planted flowers
+  if(flowerbed[0] == 1) start = 2
+  else if(flowerbed[1] == 1) start = 3
+  else if(flowerbed[0] == 0 && flowerbed[1] == 0) {
+    flowerbed[0] = 1
+    count++
+    start = 2
+  }
+  
+  // Check the last index for a plant
+  if(flowerbed[flowerbed.length-1] == 0 && flowerbed[flowerbed.length-2] == 0) {
+    flowerbed[flowerbed.length-1] = 1
+    count++
+  }
+  
+  // Create a for loop
+  for(let i = start;i < flowerbed.length;i++) {
+    // If the previous and next plot are empty plant the flower and add one to count
+    if(flowerbed[i] == 0 && flowerbed[i-1] == 0 && flowerbed[i+1] == 0) {
+      flowerbed[i] = 1
+      count++
+    }
+  }
+  
+  // Check if count is greater than or equal to n, if true, return true else false
+  if(count >= n) return true 
+  return false
+};
