@@ -649,3 +649,147 @@ var wordPattern = function(pattern, str) {
   }
   return false
 };
+
+// Question 949. Largest Time for Given Digits
+
+var largestTimeFromDigits = function(A) {
+  // Change the input into a time, the largest possible
+  // Make variable for the output
+  let time
+  
+  // After every check we remove the number from the input
+  // Check for the first hour digit between 0-2
+  if(A.includes(2)) {
+    time = '2'
+    // Check for first minute possibility
+    A[A.indexOf(parseInt(time[0]))] = -1
+    if(A.includes(5)) true
+    else if(A.includes(4)) true
+    else if(A.includes(3)) {
+      A[A.indexOf(3)] = -2
+      if(A.includes(3)) A[A.indexOf(-2)] = 3
+      else if(A.includes(2)) A[A.indexOf(-2)] = 3
+      else if(A.includes(1)) A[A.indexOf(-2)] = 3
+      else if(A.includes(0)) A[A.indexOf(-2)] = 3
+      else {
+        // Put back the 2 and go to the next if statement
+        A[A.indexOf(-2)] = 3
+        A[A.indexOf(-1)] = 2
+        if(A.includes(1)) {
+          time = '1'
+          A[A.indexOf(parseInt(time[0]))] = -1
+        }
+        else if(A.includes(0)) {
+          time = '0'
+          A[A.indexOf(parseInt(time[0]))] = -1
+        }
+        else return ''
+      }
+    }
+    else if(A.includes(2)) {
+      A[A.indexOf(2)] = -2
+      if(A.includes(3)) A[A.indexOf(-2)] = 2
+      else if(A.includes(2)) A[A.indexOf(-2)] = 2
+      else if(A.includes(1)) A[A.indexOf(-2)] = 2
+      else if(A.includes(0)) A[A.indexOf(-2)] = 2
+      else {
+        // Put back the 2 and go to the next if statement
+        A[A.indexOf(-2)] = 2
+        A[A.indexOf(-1)] = 2
+        if(A.includes(1)) {
+          time = '1'
+          A[A.indexOf(parseInt(time[0]))] = -1
+        }
+        else if(A.includes(0)) {
+          time = '0'
+          A[A.indexOf(parseInt(time[0]))] = -1
+        }
+        else return ''
+      }
+    }
+    else if(A.includes(1)) {
+      A[A.indexOf(1)] = -2
+      if(A.includes(3)) A[A.indexOf(-2)] = 1
+      else if(A.includes(2)) A[A.indexOf(-2)] = 1
+      else if(A.includes(1)) A[A.indexOf(-2)] = 1
+      else if(A.includes(0)) A[A.indexOf(-2)] = 1
+      else {
+        // Put back the 2 and go to the next if statement
+        A[A.indexOf(-2)] = 1
+        A[A.indexOf(-1)] = 2
+        if(A.includes(1)) {
+          time = '1'
+          A[A.indexOf(parseInt(time[0]))] = -1
+        }
+        else if(A.includes(0)) {
+          time = '0'
+          A[A.indexOf(parseInt(time[0]))] = -1
+        }
+        else return ''
+      }
+    }
+    else if(A.includes(0)) {
+      A[A.indexOf(0)] = -2
+      if(A.includes(3)) A[A.indexOf(-2)] = 0
+      else if(A.includes(2)) A[A.indexOf(-2)] = 0
+      else if(A.includes(1)) A[A.indexOf(-2)] = 0
+      else if(A.includes(0)) A[A.indexOf(-2)] = 0
+      else {
+        // Put back the 2 and go to the next if statement
+        A[A.indexOf(-2)] = 0
+        A[A.indexOf(-1)] = 2
+        if(A.includes(1)) {
+          time = '1'
+          A[A.indexOf(parseInt(time[0]))] = -1
+        }
+        else if(A.includes(0)) {
+          time = '0'
+          A[A.indexOf(parseInt(time[0]))] = -1
+        }
+        else return ''
+      }
+    }
+  }
+  else if(A.includes(1)) {
+    time = '1'
+    A[A.indexOf(parseInt(time[0]))] = -1
+  }
+  else if(A.includes(0)) {
+    time = '0'
+    A[A.indexOf(parseInt(time[0]))] = -1
+  }
+  else return ''
+  
+  // Check the first hour digit to see what the second hour can be  
+  // Check for the second hour digit between 0-9, depending on the first hour could be 0-3
+  if(time.includes(2)) {
+    if(A.includes(3)) time += '3'
+    else if(A.includes(2)) time += '2'
+    else if(A.includes(1)) time += '1'
+    else if(A.includes(0)) time += '0'
+    else return ''
+  }
+  else {
+    time += Math.max(...A)
+  }
+  
+  A[A.indexOf(parseInt(time[1]))] = -1
+  // Add the colon
+  time += ':'
+  
+  // Check for the first minute digit between 0-5
+  if(A.includes(5)) time += '5'
+  else if(A.includes(4)) time += '4'
+  else if(A.includes(3)) time += '3'
+  else if(A.includes(2)) time += '2'
+  else if(A.includes(1)) time += '1'
+  else if(A.includes(0)) time += '0'
+  else return ''
+  
+  A[A.indexOf(parseInt(time[3]))] = -1
+  // Check for the second minute digit between 0-9
+  time += Math.max(...A)
+  
+  // If any of the previous fail return an empty string, else return the time
+  return time
+};
