@@ -833,3 +833,22 @@ var canPlaceFlowers = function(flowerbed, n) {
   if(count >= n) return true 
   return false
 };
+
+
+// Question 1323. Maximum 69 Number
+
+var maximum69Number  = function(num) {
+  // Create the largest 69 possible
+  // Create a variable to save the new number
+  let ans = num.toString().split('')
+  // Check all numbers to see with a loop
+  for(let i = 0;i < ans.length;i++) {
+    // If we find a 6 change it to 9 and return the new number
+    if(ans[i] != '9'){
+      ans[i] = '9'
+      return parseInt(ans.join(''))
+    }
+  }
+  // Return the original number
+  return num
+};
