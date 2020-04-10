@@ -852,3 +852,21 @@ var maximum69Number  = function(num) {
   // Return the original number
   return num
 };
+
+
+// Question Counting Elements
+
+var countElements = function(arr) {
+  // Check to see if a number + 1 is inside of the array
+  // Create a counter
+  let count = 0
+  // Check all numbers with a loop
+  for(let i = 0;i < arr.length;i++) {
+    // Check if a number + 1 is in the array if yes add to count
+    if(arr.includes(arr[i] + 1)){
+      count++
+    }
+  }
+  // Return count
+  return count
+};
