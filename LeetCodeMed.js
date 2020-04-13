@@ -195,3 +195,69 @@ var minSetSize = function(arr) {
   // If the new length is less than half return count, else redo last two steps
   return count
 }; 
+
+
+// Question 1079. Letter Tile Possibilities
+
+var numTilePossibilities = function(tiles) {
+  // Count the number of nonspace sequences
+  // Set a hash variable
+  let hash = [], temp = ''
+  // Loop through the tiles and save all of the new tile combinations
+  for(let i = 0;i < tiles.length;i++) {
+    temp = tiles[i]
+    // Check if the individual tile is used already
+    if(!hash.includes(temp)) {
+      hash.push(temp)
+    }
+    for(let j = 0;j < tiles.length;j++){
+      if(j != i){
+        temp = `${tiles[i]} + ${tiles[j]}`
+        if(!hash.includes(temp)) {
+          hash.push(temp)
+        }
+        for(let k = 0;k < tiles.length;k++) {
+          if(k != i && k != j){
+            temp = `${tiles[i]} + ${tiles[j]} + ${tiles[k]}`
+            if(!hash.includes(temp)) {
+              hash.push(temp)
+            }
+            for(let l = 0;l < tiles.length;l++){
+              if(l != i && l != j && l != k){
+                temp = `${tiles[i]} + ${tiles[j]} + ${tiles[k]} + ${tiles[l]}`
+                if(!hash.includes(temp)) {
+                  hash.push(temp)
+                }
+                for(let m = 0;m < tiles.length;m++) {
+                  if(m != i && m != j && m != k && m != l){
+                    temp = `${tiles[i]} + ${tiles[j]} + ${tiles[k]} + ${tiles[l]} + ${tiles[m]}`
+                    if(!hash.includes(temp)) {
+                      hash.push(temp)
+                    }
+                    for(let n = 0;n < tiles.length;n++){
+                      if(n != i && n != j && n != k && n != l && n != m){
+                        temp = `${tiles[i]} + ${tiles[j]} + ${tiles[k]} + ${tiles[l]} + ${tiles[m]} + ${tiles[n]}`
+                        if(!hash.includes(temp)) {
+                          hash.push(temp)
+                        }
+                        for(let o = 0;o < tiles.length;o++){
+                          if(o != i && o != j && o != k && o != l && o != m && o != n) {
+                            temp = `${tiles[i]} + ${tiles[j]} + ${tiles[k]} + ${tiles[l]} + ${tiles[m]} + ${tiles[n]} + ${tiles[o]}`
+                            if(!hash.includes(temp)) {
+                              hash.push(temp)
+                            }
+                          }
+                        } 
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }  
+      }
+    }
+  }
+  return hash.length
+};
