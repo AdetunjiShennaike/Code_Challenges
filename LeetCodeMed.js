@@ -261,3 +261,35 @@ var numTilePossibilities = function(tiles) {
   }
   return hash.length
 };
+
+
+// Question Product Of Array Except Self
+
+var productExceptSelf = function(nums) {
+  // Multiply all values except the current index and save to an array
+  // Create an output variable, two hash tables and a shortcut for array length
+  let hashL = {}, hashR = {}, len = nums.length, ans = []
+  
+  // Grab all mutiples to the right
+  for(let i = 0;i < len-1;i++) { 
+    if(i == 0) hashL[i] = nums[i]
+    else {
+      hashL[i] = hashL[i-1] * nums[i]
+    }
+  }
+  
+  // Grab all multiples to the left
+  for(let i = len-1;i > 0;i--) { 
+    if(i == len-1) hashR[i] = nums[i]
+    else hashR[i] = hashR[i+1] * nums[i]
+  }
+  
+  // Multiply the values next to I to get the output
+  for(let i = 0;i < len;i++) { 
+    if(i == 0) ans.push(hashR[i+1])
+    else if(i == len-1) ans.push(hashL[i-1])
+    else ans.push((hashL[i-1] * hashR[i+1]))
+  }
+  
+  return ans
+};
