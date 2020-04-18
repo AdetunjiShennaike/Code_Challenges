@@ -293,3 +293,29 @@ var productExceptSelf = function(nums) {
   
   return ans
 };
+
+// Question 1344. Angle Between Hands of a Clock
+
+var angleClock = function(hour, minutes) {
+  // Turn the time into the smallest degree side
+  // Every minute is 6 degress
+  // Every minute on the hour hand is .5 degrees
+  // Every 12 minutes is 1 minute on the hour hand
+  // Create variables for degress in minutes and in hours, also for the left and right outcomes
+  let degreeH = 0, degreeM = 0, left, right
+  
+  // If the minute and hour hand are in the same spot return 0
+  // Check the left side of the clock 
+  degreeM = minutes * 6
+  hour == 12 ? degreeH = (minutes/12) * 6 : degreeH = (((hour * 5) + (minutes/12)) * 6)
+  
+  // Set the degrees into the left variable
+  left = Math.abs(degreeH - degreeM)
+  
+  // Set the degrees into the right variable
+  right = 360 - left
+  
+  // Return the smaller amount
+  if(left > right) return right
+  else return left
+};
