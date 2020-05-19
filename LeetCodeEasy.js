@@ -870,3 +870,23 @@ var countElements = function(arr) {
   // Return count
   return count
 };
+
+// Question 100. Same Tree
+
+var isSameTree = function(p, q) {
+  // Edge cases and null value
+  if(!p && !q) return true
+  if(!p && q) return false
+  if(p && !q) return false
+  
+  // Check if the values are the same
+  if(p.val != q.val) return false
+  
+  // Recursion to check the left and right sides of the tree
+  let ls = isSameTree(p.left, q.left)
+  let rs = isSameTree(p.right, q.right)
+  if(ls == false || rs == false) return false
+  
+  // If all if statements are skipped then return true
+  return true
+};
