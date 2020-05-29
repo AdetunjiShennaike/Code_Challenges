@@ -319,3 +319,30 @@ var angleClock = function(hour, minutes) {
   if(left > right) return right
   else return left
 };
+
+
+// Question 11. Container With Most Water
+
+var maxArea = function(height) {
+  // Create a multiplication table for the x and y coordinates
+  // Edgecase n <= 2
+  if(height < 2) return 0
+  if(height == 2 && height[0] > height[1]) return height[1]
+  if(height == 2 && height[0] < height[1]) return height[0]
+  // Create variable for high
+  let high = 0
+  // Create a loop to multiply the iterator and the value with a temp
+  for(let i = 0;i < height.length;i++){
+    for(let j = i + 1;j < height.length;j++){
+      // Get max height
+      if(height[i] <= height[j]) {let tall = height[i]}
+      if(height[i] >= height[j]) {let tall = height[j]}
+      // Check if the temp is higher than the saved value
+      let temp = (j - i) * tall
+      if(temp > high) {high = temp}
+    }
+  }
+    
+  // Return the highest value
+  return high
+};
