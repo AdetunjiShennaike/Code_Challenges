@@ -732,3 +732,30 @@ function multiplicationTable(row,col){
   }
   return ans
 }
+
+
+// Complete the solution so that the function will break up camel casing, using a space between words.
+
+// Example
+// solution("camelCasing")  ==  "camel Casing"
+
+
+// complete the function
+function solution(string) {
+  // Create variable to hold the ans and to hold the position of the camel case
+  let ans = '', hold = 0
+  // Loop through the string to look at every character
+  for(let i = 0;i < string.length;i++){
+    // If the character is a capital we add up until that point to the string 
+    // along with a space for the next word
+    if(string[i] != string[i].toLowerCase()){
+      ans += string.slice(hold, i) + ' ' 
+      hold = i
+    }
+    // If we are at the end of the string we simply add the last word with no space
+    if(i == string.length - 1){
+      ans += string.slice(hold)
+    }
+  }
+  return ans
+}
