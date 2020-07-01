@@ -515,3 +515,39 @@ function catAndMouse(x, y, z) {
   if(Math.abs(x-z) < Math.abs(y-z)) return 'Cat A'
   else return 'Cat B'
 }
+
+
+
+// Complete the formingMagicSquare function below.
+function formingMagicSquare(s) {
+  // get all possible ways to make a magic square
+  let posi = [
+            [[8, 1, 6], [3, 5, 7], [4, 9, 2]],
+            [[6, 1, 8], [7, 5, 3], [2, 9, 4]],
+            [[4, 9, 2], [3, 5, 7], [8, 1, 6]],
+            [[2, 9, 4], [7, 5, 3], [6, 1, 8]], 
+            [[8, 3, 4], [1, 5, 9], [6, 7, 2]],
+            [[4, 3, 8], [9, 5, 1], [2, 7, 6]], 
+            [[6, 7, 2], [1, 5, 9], [8, 3, 4]], 
+            [[2, 7, 6], [9, 5, 1], [4, 3, 8]],
+            ]
+
+  // set a variable for the ans 45 is the sum of 1-9
+  let ans = 45
+
+  // loop through all the possibilities
+  posi.forEach(e => {
+    // set a temp counter for each iteration
+    let count = 0
+    // loop through each individual number and check the difference 
+    for(let i = 0;i < s.length;i++){
+      for(let j = 0;j < s[i].length;j++){
+        if(s[i][j] != e[i][j]){
+          count += Math.abs(s[i][j] - e[i][j])
+        }
+      }
+    }
+    if(count < ans) ans = count
+  })
+  return ans
+}
