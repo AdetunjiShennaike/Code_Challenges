@@ -890,3 +890,24 @@ var isSameTree = function(p, q) {
   // If all if statements are skipped then return true
   return true
 };
+
+// Question 141. Linked List Cycle
+
+var hasCycle = function(head) {
+  // create a varibale to traverse the linked list
+  let temp = head
+  // start the loop 
+  while(temp){
+    // check if the visit variable exist
+    if(!temp.visit){
+      // if it doesnt create it and move one
+      temp.visit = true
+      temp = temp.next
+    }
+    // if it does we have a loop
+    else {
+      return true
+    }
+  }
+  return false
+};
